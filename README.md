@@ -18,9 +18,9 @@
 
 Esse projeto foi desenvolvido com as seguintes tecnologias:
 
-- [React Native](https://reactnative.dev/)
-- [Typescript](https://www.typescriptlang.org/)
-- [Expo](https://expo.io/)
+-  [React Native](https://reactnative.dev/)
+-  [Typescript](https://www.typescriptlang.org/)
+-  [Expo](https://expo.io/)
 
 ## 💻 Projeto
 
@@ -32,10 +32,10 @@ Você pode visualizar o layout do projeto através [desse link](https://www.figm
 
 ## 🚀 Como executar
 
-- Clone o repositório
-- Instale as dependências com `yarn`
-- Inicie seu app com `expo start`
-- Inicie a fake api com `json-server ./src/services server.json --host 192.168.1.4 --port 3333 --delay 700`. Substitua o host pelo seu endereço IP local. Faça o mesmo no arquivo API dentro de services.
+-  Clone o repositório
+-  Instale as dependências com `yarn`
+-  Inicie seu app com `expo start`
+-  Inicie a fake api com `json-server ./src/services server.json --host 192.168.1.4 --port 3333 --delay 700`. Substitua o host pelo seu endereço IP local. Faça o mesmo no arquivo API dentro de services.
 
 ## 📄 Licença
 
@@ -43,4 +43,14 @@ Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE.md) para
 
 ---
 
-Feito com ♥ by Rocketseat 👋🏻 [Participe da nossa comunidade!](https://discordapp.com/invite/gCRAFhc)
+Projeto concluido com ♥ by PitzTech durante a NLW 5 :wave:
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/victor-laurentino-do-nascimento/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="mailto:victorlaurentino7@gmail.com?subject=Oi%20Victor!%20Vim%20do%20seu%20GitHub"><img alt="Gmail" src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"></a>
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://www.linkedin.com/in/victor-laurentino-do-nascimento/"><img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+</p>
+
+<sup>Apoio da [Rocketseat](https://discord.com/invite/gCRAFhc)</sup>
