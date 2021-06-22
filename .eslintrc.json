@@ -11,6 +11,9 @@
 		"prettier",
 		"plugin:prettier/recommended"
 	],
+	"globals": {
+		"JSX": true
+	},
 	"parser": "@typescript-eslint/parser",
 	"parserOptions": {
 		"ecmaFeatures": {
@@ -49,8 +52,8 @@
 				"useTabs": true,
 				"semi": false,
 				"arrowParens": "avoid",
-				"jsxBracketSameLine": false,
-				"printWidth": 90
+				"jsxBracketSameLine": false
+				//"printWidth": 90
 				//"bracketSpacing": false
 			}
 		]
