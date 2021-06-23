@@ -15,8 +15,9 @@ export async function savePlant(plant: PlantProps): Promise<void> {
 			}
 		}
 
+		console.log(newPlant)
 		await AsyncStorage.setItem(
-			"@plantmanager:planta",
+			"@plantmanager:plants",
 			JSON.stringify({ ...newPlant, ...oldPlants })
 		)
 	} catch (err) {

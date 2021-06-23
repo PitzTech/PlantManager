@@ -11,7 +11,10 @@ import {
 } from "react-native"
 import { SvgFromUri } from "react-native-svg"
 import { getBottomSpace } from "react-native-iphone-x-helper"
+
 import { useRoute } from "@react-navigation/core"
+import { useNavigation } from "@react-navigation/native"
+
 import DateTimePicker, { Event } from "@react-native-community/datetimepicker"
 import { isBefore, format } from "date-fns"
 
@@ -21,7 +24,11 @@ import waterDropImg from "../assets/waterdrop.png"
 
 import { Button } from "../components/Button"
 import { savePlant } from "../libs/storage"
+
+// Types
+
 import { PlantProps } from "../types/plants"
+import { ConfirmationScreenParams } from "../types/screens"
 
 interface Params {
 	plant: PlantProps
@@ -31,6 +38,7 @@ export function PlantSave(): JSX.Element {
 	const [selectedDateTime, setselectedDateTime] = useState(new Date())
 	const [showDatePicker, setShowDatePicker] = useState(Platform.OS === "ios")
 
+	const navigation = useNavigation()
 	const route = useRoute()
 	const { plant } = route.params as Params
 
@@ -56,6 +64,16 @@ export function PlantSave(): JSX.Element {
 				...plant,
 				dateTimeNotification: selectedDateTime
 			})
+			const nextScreen: ConfirmationScreenParams = {
+				title: "Tudo certo",
+				subtitle:
+					"Fique tranquilo que sempre vamos lembrar você de cuidar da sua plantinha com muito cuidado.",
+				buttonTitle: "Muito Obrigado 😁",
+				icon: "hug",
+				nextScreen: "MyPlants"
+			}
+
+			navigation.navigate("Confirmation", nextScreen)
 		} catch {
 			Alert.alert("Não foi possível salvar.")
 		}
