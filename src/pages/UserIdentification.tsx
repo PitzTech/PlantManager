@@ -53,7 +53,8 @@ export const UserIdentification: React.FC = () => {
 									{isFilled ? "😄" : "😀"}
 								</Text>
 								<Text style={styles.title}>
-									Como podemos {"\n"}chamar você?
+									Como podemos{"\n"}
+									chamar você?
 								</Text>
 							</View>
 							<TextInput

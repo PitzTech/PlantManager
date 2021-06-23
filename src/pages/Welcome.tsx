@@ -27,8 +27,8 @@ export const Welcome: React.FC = () => {
 	return (
 		<SafeAreaView style={styles.container}>
 			<Text style={styles.title}>
-				Gerencie {"\n"}
-				suas plantas de {"\n"}
+				Gerencie{"\n"}
+				suas plantas de{"\n"}
 				forma fácil
 			</Text>
 
