@@ -1,7 +1,9 @@
 {
 	"main": "node_modules/expo/AppEntry.js",
 	"scripts": {
-		"run:fakeServer": "npx json-server ./src/services/server.json --host 192.168.184.1 --port 3333",
+		"run:fakeServer1": "npx json-server ./src/services/server.json --host 192.168.184.1 --port 3333",
+		"run:fakeServerStep1": "npx json-server --watch ./src/services/server.json -p 3333",
+		"run:fakeServerStep2": "npx ngrok http 3333",
 		"start": "expo start",
 		"android": "expo start --android",
 		"ios": "expo start --ios",

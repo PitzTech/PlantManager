@@ -30,13 +30,19 @@ interface PlantProps {
 export const PlantSelect: React.FC = () => {
 	const [environments, setEnvironments] = useState<EnvironmentProps[]>([])
 	const [plants, setPlants] = useState<PlantProps[]>([])
-	const [filteredPlants, setFilteredPlants] = useState([])
+	const [filteredPlants, setFilteredPlants] = useState<PlantProps[]>([])
 	const [environmentSelected, setEnvironmentSelected] = useState("all")
 
 	function handleEnvironmentSelected(environment: string): void {
 		setEnvironmentSelected(environment)
 
-		if (environment == "all") return setEnvironmentSelected(filteredPlants)
+		if (environment === "all") return setFilteredPlants(plants)
+
+		const filtered = plants.filter(plant => {
+			return plant.environments.includes(environment)
+		})
+
+		setFilteredPlants(filtered)
 	}
 
 	useEffect(() => {
@@ -87,7 +93,7 @@ export const PlantSelect: React.FC = () => {
 
 			<View style={styles.plants}>
 				<FlatList
-					data={plants}
+					data={filteredPlants}
 					renderItem={({ item }) => <PlantCardPrimary data={item} />}
 					showsVerticalScrollIndicator={false}
 					numColumns={2}
