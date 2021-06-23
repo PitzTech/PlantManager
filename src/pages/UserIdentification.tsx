@@ -8,9 +8,11 @@ import {
 	KeyboardAvoidingView,
 	TouchableWithoutFeedback,
 	Platform,
-	Keyboard
+	Keyboard,
+	Alert
 } from "react-native"
 import { useNavigation } from "@react-navigation/native"
+import AsyncStorage from "@react-native-async-storage/async-storage"
 
 import { Button } from "../components/Button"
 
@@ -35,7 +37,14 @@ export const UserIdentification: React.FC = () => {
 		setName(value)
 	}
 
-	function handleSubmit(): void {
+	async function handleSubmit(): Promise<void> {
+		if (!name) {
+			return Alert.alert(
+				"Ops 😅, minha memória falhou. Digite seu nome por favor?"
+			)
+		}
+
+		await AsyncStorage.setItem("@plantmanager:user", name)
 		navigation.navigate("Confirmation")
 	}
 
