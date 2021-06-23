@@ -35,7 +35,7 @@ const AppRoutes: React.FC = () => (
 
 		<stackRoutes.Screen name="PlantSave" component={PlantSave} />
 
-		<stackRoutes.Screen name="MyPlants" component={MyPlants} />
+		<stackRoutes.Screen name="MyPlants" component={AuthRoutes} />
 	</stackRoutes.Navigator>
 )
 
