@@ -20,7 +20,7 @@ import colors from "../../styles/colors"
 import waterDropImg from "../assets/waterdrop.png"
 
 import { Button } from "../components/Button"
-
+import { savePlant } from "../libs/storage"
 import { PlantProps } from "../types/plants"
 
 interface Params {
@@ -50,53 +50,74 @@ export function PlantSave(): JSX.Element {
 		setShowDatePicker(oldState => !oldState)
 	}
 
+	async function handleSave(): Promise<void> {
+		try {
+			await savePlant({
+				...plant,
+				dateTimeNotification: selectedDateTime
+			})
+		} catch {
+			Alert.alert("Não foi possível salvar.")
+		}
+	}
+
 	return (
-		<View style={styles.container}>
-			<View style={styles.plantInfo}>
-				<SvgFromUri uri={plant.photo} height={150} width={150} />
+		<ScrollView
+			showsVerticalScrollIndicator={false}
+			contentContainerStyle={styles.scrollListContainer}
+		>
+			<View style={styles.container}>
+				<View style={styles.plantInfo}>
+					<SvgFromUri uri={plant.photo} height={150} width={150} />
 
-				<Text style={styles.plantName}>{plant.name}</Text>
-				<Text style={styles.plantAbout}>{plant.about}</Text>
-			</View>
-			<View style={styles.controller}>
-				<View style={styles.waterDropContainer}>
-					<Image source={waterDropImg} style={styles.waterDropImage} />
-					<Text style={styles.waterDropText}>{plant.water_tips}</Text>
+					<Text style={styles.plantName}>{plant.name}</Text>
+					<Text style={styles.plantAbout}>{plant.about}</Text>
 				</View>
+				<View style={styles.controller}>
+					<View style={styles.waterDropContainer}>
+						<Image source={waterDropImg} style={styles.waterDropImage} />
+						<Text style={styles.waterDropText}>{plant.water_tips}</Text>
+					</View>
 
-				<Text style={styles.alertLabel}>
-					Escolha o melhor horário para ser lembrado:
-				</Text>
+					<Text style={styles.alertLabel}>
+						Escolha o melhor horário para ser lembrado:
+					</Text>
 
-				{showDatePicker && (
-					<DateTimePicker
-						value={selectedDateTime}
-						mode="time"
-						display="spinner"
-						onChange={handleChangeTime}
-					/>
-				)}
+					{showDatePicker && (
+						<DateTimePicker
+							value={selectedDateTime}
+							mode="time"
+							display="spinner"
+							onChange={handleChangeTime}
+						/>
+					)}
 
-				{Platform.OS === "android" && (
-					<TouchableOpacity
-						style={styles.dateTimePickerButton}
-						onPress={handleOpenDateTimePickerAndroid}
-					>
-						<Text style={styles.dateTimePickerText}>
-							{`Horário: ${format(selectedDateTime, "HH:mm")}`}
-						</Text>
-					</TouchableOpacity>
-				)}
+					{Platform.OS === "android" && (
+						<TouchableOpacity
+							style={styles.dateTimePickerButton}
+							onPress={handleOpenDateTimePickerAndroid}
+						>
+							<Text style={styles.dateTimePickerText}>
+								{`Horário: ${format(selectedDateTime, "HH:mm")}`}
+							</Text>
+						</TouchableOpacity>
+					)}
 
-				<Button title="Cadastrar planta" onPress={() => {}} />
+					<Button title="Cadastrar planta" onPress={handleSave} />
+				</View>
 			</View>
-		</View>
+		</ScrollView>
 	)
 }
 
 const styles = StyleSheet.create({
 	container: {
 		flex: 1,
+		justifyContent: "space-between",
+		backgroundColor: colors.shape
+	},
+	scrollListContainer: {
+		flexGrow: 1,
 		justifyContent: "space-between",
 		backgroundColor: colors.shape
 	},
