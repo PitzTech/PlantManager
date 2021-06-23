@@ -17,14 +17,38 @@ import waterDropImg from "../assets/waterdrop.png"
 
 import { Header } from "../components/Header"
 import { PlantCardSecondary } from "../components/PlantCardSecondary"
+import { Load } from "../components/Load"
 
 import { PlantProps } from "../types/plants"
-import { loadPlant } from "../libs/storage"
+import { loadPlant, removePlant } from "../libs/storage"
 
 export function MyPlants(): JSX.Element {
 	const [myPlants, setMyPlants] = useState<PlantProps[]>([])
 	const [loading, setLoading] = useState(true)
 	const [nextWatered, setNextWatered] = useState<string>()
+
+	function handleRemove(plant: PlantProps): void {
+		Alert.alert("Remover", `Deseja remover a ${plant.name}?`, [
+			{
+				text: "Não 🙏",
+				style: "cancel"
+			},
+			{
+				text: "Sim 😥",
+				onPress: async () => {
+					try {
+						await removePlant(plant.id)
+
+						setMyPlants(oldData =>
+							oldData.filter(item => item.id !== plant.id)
+						)
+					} catch {
+						Alert.alert("Não foi possível remover!")
+					}
+				}
+			}
+		])
+	}
 
 	useEffect(() => {
 		async function loadStoragedData(): Promise<void> {
@@ -49,7 +73,9 @@ export function MyPlants(): JSX.Element {
 		loadStoragedData()
 	}, [])
 
-	return (
+	return loading ? (
+		<Load />
+	) : (
 		<SafeAreaView style={styles.container}>
 			<Header />
 
@@ -63,7 +89,12 @@ export function MyPlants(): JSX.Element {
 				<FlatList
 					data={myPlants}
 					keyExtractor={item => String(item.id)}
-					renderItem={({ item }) => <PlantCardSecondary data={item} />}
+					renderItem={({ item }) => (
+						<PlantCardSecondary
+							data={item}
+							handleRemove={() => handleRemove(item)}
+						/>
+					)}
 					showsVerticalScrollIndicator={false}
 					contentContainerStyle={{ flex: 1 }}
 				/>
