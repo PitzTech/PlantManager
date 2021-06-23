@@ -1,7 +1,7 @@
 <h1 align="center">
   <img alt="Plant Manager" title="Plant Manager" src=".github/logo.png" />
 </h1>
-
+<blockquote align="center">“Sucesso não é o resultado de um jogo, mas o destino de uma jornada”!</blockquote>
 <p align="center">
   <img alt="License" src="https://img.shields.io/static/v1?label=license&message=MIT&color=32B768&labelColor=000000">
 
