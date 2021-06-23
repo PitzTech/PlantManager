@@ -35,7 +35,8 @@ Você pode visualizar o layout do projeto através [desse link](https://www.figm
 -  Clone o repositório
 -  Instale as dependências com `yarn`
 -  Inicie seu app com `expo start`
--  Inicie a fake api com `json-server ./src/services server.json --host 192.168.1.4 --port 3333 --delay 700`. Substitua o host pelo seu endereço IP local. Faça o mesmo no arquivo API dentro de services.
+-  Inicie a fake api com `npx json-server --watch ./src/services/server.json -p 3333 --delay 700`. Substitua o host pelo seu endereço IP local. Faça o mesmo no arquivo API dentro de services.
+- Inicie a ponte o servidor `npx ngrok http 3333` e coloque o endereço criado no arquivo [/src/services/api.ts](/src/services/api.ts)
 
 ## 📄 Licença
 
