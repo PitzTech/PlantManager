@@ -36,7 +36,9 @@ Você pode visualizar o layout do projeto através [desse link](https://www.figm
 -  Instale as dependências com `yarn`
 -  Inicie seu app com `expo start`
 -  Inicie a fake api com `npx json-server --watch ./src/services/server.json -p 3333 --delay 700`. Substitua o host pelo seu endereço IP local. Faça o mesmo no arquivo API dentro de services.
-- Inicie a ponte o servidor `npx ngrok http 3333` e coloque o endereço criado na propriedade `baseUrl` do arquivo [/src/services/api.ts](/src/services/api.ts)
+-  Inicie a ponte o servidor `npx ngrok http 3333` e coloque o endereço criado na propriedade `baseUrl` do arquivo [/src/services/api.ts](/src/services/api.ts)
+
+*  OBS: Caso teste em vm local: `adb reverse tcp:3333 tcp:3333` com a `baseURL: "http://localhost:3333"`
 
 ## 📄 Licença
 
